@@ -1,6 +1,6 @@
 public class WelcomeMenu extends JavaFXTemplate {
     private static String rules;
-    private String odds;
+    private int odds;
 
     public static String getRules() {
         rules = " Players wager by choosing a set amount of numbers( pick 2 numbers, pick 10 numbers, etc.) ranging from 1 to 80. " +
@@ -9,28 +9,38 @@ public class WelcomeMenu extends JavaFXTemplate {
                 "Players win by matching a set amount of their numbers to the numbers that are randomly drawn.";
         return rules;
     }
-
-    public String getOdds(int numSpots) {
+    // inputs user spots, outputs the odds selection into setOdds, getOdds used for game logic
+    public void placeOdds(int numSpots) {
         if (numSpots != 1 && numSpots != 4 && numSpots != 8 && numSpots != 10) {
             System.out.println("Invalid number of spots");
         }
 
         if (numSpots == 1) {
-            this.odds = "25% chance of winning";
+            setOdds(1);//"25% chance of winning";// need to be integer values that affect game outcome
         } else if (numSpots == 4) {
-            this.odds = "25.90% chance of winning";
+        	setOdds(2); //= "25.90% chance of winning";// need to be integer values that affect game outcome
         } else if (numSpots == 8) {
-            this.odds = "10.23% chance of winning";
+            setOdds(3); //= "10.23% chance of winning";// need to be integer values that affect game outcome
         } else if (numSpots == 10) {
-            this.odds = "11.04% chance of winning";
+            setOdds(4); //= "11.04% chance of winning"; // need to be integer values that affect game outcome
         }
-        return odds;
+        else {
+        	// set text box to let user know input invalid
+        }
     }
 
 
     public void quitKeno() {
         System.exit(0);
     }
+
+	public int getOdds() {
+		return this.odds;
+	}
+
+	public void setOdds(int odds) {
+		this.odds = odds;
+	}
 
 
 
